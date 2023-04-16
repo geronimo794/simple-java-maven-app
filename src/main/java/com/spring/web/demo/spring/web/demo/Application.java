@@ -13,7 +13,8 @@ public class Application {
       SpringApplication.run(Application.class, args);
     }
     @GetMapping("/")
-    public String root(@RequestParam(value = "name", defaultValue = "World") String name) {
-      return String.format("Hello %s!", name);
-    }
+	public String index(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+		model.addAttribute("name", name);
+		return "index";
+	}
 }
