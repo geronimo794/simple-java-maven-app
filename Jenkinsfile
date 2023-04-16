@@ -24,6 +24,9 @@ pipeline {
         stage('Deliver') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
+                // Add button confirmation to deploy
+                input message: 'Stop spring service?' 
+
             }
         }
     }
