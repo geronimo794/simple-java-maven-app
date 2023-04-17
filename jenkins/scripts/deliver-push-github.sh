@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 
-
-git push
+git push origin HEAD:master
