@@ -26,3 +26,4 @@ set -x
 java -jar target/${NAME}-${VERSION}.jar &
 sleep 1
 echo $! > .pidfile
+echo 'You can access your local deploy on http://localhost:8080'
