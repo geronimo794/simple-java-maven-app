@@ -28,15 +28,11 @@ pipeline {
             steps {
                 sh './jenkins/scripts/deliver-local.sh'
                 sh './jenkins/scripts/wait.sh'
-                sh './jenkins/scripts/kill.sh'
             }
         }
         stage('Public Deploy') {
             steps {
                 sh './jenkins/scripts/deliver-push-github.sh'
-                // Add button confirmation to deploy
-                input message: 'Stop spring service?' 
-
             }
         }
 
