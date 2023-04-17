@@ -14,12 +14,13 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'mvn test'
-                // Add button confirmation to deploy
-                input message: 'Lanjutkan ke tahap Deploy?' 
             }
             post {
                 always {
                     junit 'target/surefire-reports/*.xml'
+                    // Add button confirmation to deploy
+                    input message: 'Lanjutkan ke tahap Deploy?' 
+
                 }
             }
         }
