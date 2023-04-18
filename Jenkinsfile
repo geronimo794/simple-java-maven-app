@@ -32,7 +32,6 @@ node {
                     git remote set-url origin git@github.com:geronimo794/simple-java-maven-app.git
                     mkdir ~/.ssh/
                     ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-                    ssh -T git@github.com 
                     git push origin HEAD:master
                 ''')
             }
