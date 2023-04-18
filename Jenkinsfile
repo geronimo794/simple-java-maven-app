@@ -32,10 +32,11 @@ pipeline {
         }
         stage('Public Deploy') {
             steps {
-                checkout scmGit(
-                    branches: [[name: 'master']],
-                    userRemoteConfigs: [[credentialsId:  'laptop-macbook',
-                    url: 'ssh://git@github.com:geronimo794/simple-java-maven-app.git']])
+                sshagent(['laptop-macbook']) 
+                {
+                    sh('git push') 
+                }
+
             }
         }
 
