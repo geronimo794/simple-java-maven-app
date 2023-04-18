@@ -32,9 +32,9 @@ node {
                     git config --local user.email "geronimo794@gmail.com"
                     git config --local user.name "Ach Rozikin"
                     git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
-                    git checkout master
                     git add .
                     git commit -m "Jenkins Build Success"
+                    git checkout master
                     git pull
                     git push origin HEAD:master
                 ''')
