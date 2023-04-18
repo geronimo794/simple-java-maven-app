@@ -30,6 +30,9 @@ node {
                     git config --local user.name "Ach Rozikin"
                     git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
                     git remote set-url origin git@github.com:geronimo794/simple-java-maven-app.git
+                    
+                    git add .
+                    git commit -m "Jenkins Build Success"
                     ssh-keyscan -H github.com >> ~/.ssh/known_hosts
                     git push
                 ''')
