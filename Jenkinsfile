@@ -33,9 +33,13 @@ pipeline {
         stage('Public Deploy') {
             steps {
                 // sh "apt-get install ssh -y"
-                withCredentials([usernamePassword(credentialsId: 'ci-github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                        sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/my-org/my-repo.git')
-                    }
+                // withCredentials([usernamePassword(credentialsId: 'ci-github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                //         sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/my-org/my-repo.git')
+                //     }
+                sshagent(['laptop-macbook']) 
+                {
+                    sh('git push') 
+                }
 
 
             }
