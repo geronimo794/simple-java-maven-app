@@ -36,12 +36,16 @@ pipeline {
                 // withCredentials([usernamePassword(credentialsId: 'ci-github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                 //         sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/my-org/my-repo.git')
                 //     }
-                sshagent(['laptop-macbook']) 
-                {
-                    sh('git push') 
+                // sshagent(['laptop-macbook']) 
+                // {
+                //     sh('git push') 
+                // }
+                withCredentials([usernamePassword(credentialsId: 'username-password-github', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]){
+                    sh('''
+                        git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
+                        git push origin HEAD:$TARGET_BRANCH
+                    ''')
                 }
-
-
             }
         }
 
