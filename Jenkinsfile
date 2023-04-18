@@ -29,25 +29,25 @@ pipeline {
             steps {
                 sh './jenkins/scripts/deliver-local.sh'
                 // sh './jenkins/scripts/wait.sh'
+
                 input message: 'Lanjutkan ke tahap Deploy Github?' 
             }
         }
         stage('Public Deploy') {
             steps {
-                // sh "apt-get install ssh -y"
+                sh "apt-get install ssh -y"
                 // withCredentials([usernamePassword(credentialsId: 'ci-github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                 //         sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/my-org/my-repo.git')
                 //     }
-                // sshagent(['laptop-macbook']) 
-                // {
-                //     sh('git push') 
-                // }
+                sshagent(['laptop-macbook']) 
+                {
+                    sh('git push') 
+                }
                 withCredentials([usernamePassword(credentialsId: 'username-password-github', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]){
                     sh('''
                         git config --local user.email "geronimo794@gmail.com"
                         git config --local user.name "Ach Rozikin"
                         git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
-                        ssh -T git@github.com
                         git init
                         git branch
                         git add .
