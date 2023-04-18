@@ -48,8 +48,7 @@ pipeline {
                         git branch
                         git add .
                         git commit -m "Jenkins Build Success"
-                        git push
-
+                        git push origin HEAD:master
                     ''')
                 }
             }
