@@ -27,7 +27,8 @@ pipeline {
         stage('Local Deploy') {
             steps {
                 sh './jenkins/scripts/deliver-local.sh'
-                sh './jenkins/scripts/wait.sh'
+                // sh './jenkins/scripts/wait.sh'
+                input message: 'Lanjutkan ke tahap Deploy Github?' 
             }
         }
         stage('Public Deploy') {
