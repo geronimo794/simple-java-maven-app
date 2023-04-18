@@ -2,7 +2,8 @@ pipeline {
     agent {
         docker {
             image 'maven:3.9.0-eclipse-temurin-11-focal'
-            args '-v /root/.m2:/root/.m2 -p 8080:8080'
+            // args '-v /root/.m2:/root/.m2 -p 8080:8080'
+            args '-p 8080:8080'
         }
     }
     stages {
