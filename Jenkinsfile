@@ -30,6 +30,7 @@ node {
                     git config --local user.name "Ach Rozikin"
                     git remote set-url origin git@github.com:geronimo794/simple-java-maven-app.git
                     git remote -v
+                    git branch
 
 
                     ssh-keyscan -H github.com >> ~/.ssh/known_hosts
