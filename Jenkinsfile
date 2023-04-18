@@ -46,6 +46,7 @@ pipeline {
                         git config --local user.name "Ach Rozikin"
                         git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
                         git branch
+                        git checkout -b master
                         git add .
                         git commit -m "Jenkins Build Success"
                         git push -u origin master
