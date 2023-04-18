@@ -42,8 +42,8 @@ pipeline {
                 // }
                 withCredentials([usernamePassword(credentialsId: 'username-password-github', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]){
                     sh('''
-                        git config --global user.email "geronimo794@gmail.com"
-                        git config --global user.name "Ach Rozikin"
+                        git config --local user.email "geronimo794@gmail.com"
+                        git config --local user.name "Ach Rozikin"
                         git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
                         git init
                         git add .
