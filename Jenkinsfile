@@ -45,6 +45,7 @@ pipeline {
                         git config --local user.email "geronimo794@gmail.com"
                         git config --local user.name "Ach Rozikin"
                         git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
+                        ssh -T git@github.com
                         git init
                         git branch
                         git add .
