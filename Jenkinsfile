@@ -43,7 +43,12 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'username-password-github', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]){
                     sh('''
                         git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
-                        git push origin master
+                        git init
+                        git add .
+                        git commit -m "Jenkins Build Success"
+                        git remote add origin "github.com/geronimo794/simple-java-maven-app.git"
+                        git push -u origin master
+
                     ''')
                 }
             }
