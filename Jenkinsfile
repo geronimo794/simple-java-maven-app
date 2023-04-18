@@ -33,7 +33,7 @@ node {
                     git remote -v
                     git branch
                     git status
-
+                    cat test.local.commit
                     ssh-keyscan -H github.com >> ~/.ssh/known_hosts
                     git pull
                     git push
