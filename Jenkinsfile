@@ -29,7 +29,6 @@ node {
                     git config --local user.email "geronimo794@gmail.com"
                     git config --local user.name "Ach Rozikin"
                     git init
-                    git remote remove origin1
                     git remote set-url origin git@github.com:geronimo794/simple-java-maven-app.git
                     git remote -v
                     git branch
