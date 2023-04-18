@@ -18,34 +18,34 @@ node {
             input message: 'Lanjutkan ke tahap Deploy Github?' 
         }
     }
-        stage('Public Deploy') {
-            // sh "sudo apt-get install ssh -y"
-            // // withCredentials([usernamePassword(credentialsId: 'ci-github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-            // //         sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/my-org/my-repo.git')
-            // //     }
-            sshagent(['laptop-macbook']) 
-            {
-                sh('''
-                    ls
-                ''')
-            } 
+        // stage('Public Deploy') {
+        //     // sh "sudo apt-get install ssh -y"
+        //     // // withCredentials([usernamePassword(credentialsId: 'ci-github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+        //     // //         sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/my-org/my-repo.git')
+        //     // //     }
+        //     sshagent(['laptop-macbook']) 
+        //     {
+        //         sh('''
+        //             ls
+        //         ''')
+        //     } 
 
-            //     sh('git push') 
-                    //             git add .
-                    // git commit -m "Jenkins Build Success"
-                    // git checkout master
-                    // git pull
+        //     //     sh('git push') 
+        //             //             git add .
+        //             // git commit -m "Jenkins Build Success"
+        //             // git checkout master
+        //             // git pull
 
-            // withCredentials([usernamePassword(credentialsId: 'username-password-github', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]){
-            //     sh('''
-            //         git config --local user.email "geronimo794@gmail.com"
-            //         git config --local user.name "Ach Rozikin"
-            //         git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
-            //         git remote set-url origin https://github.com/geronimo794/simple-java-maven-app.git
-            //         git push origin HEAD:master
-            //     ''')
-            // }
-        }
+        //     // withCredentials([usernamePassword(credentialsId: 'username-password-github', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]){
+        //     //     sh('''
+        //     //         git config --local user.email "geronimo794@gmail.com"
+        //     //         git config --local user.name "Ach Rozikin"
+        //     //         git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
+        //     //         git remote set-url origin https://github.com/geronimo794/simple-java-maven-app.git
+        //     //         git push origin HEAD:master
+        //     //     ''')
+        //     // }
+        // }
 
 
 }
