@@ -35,6 +35,7 @@ node {
                     git branch
                     git status
                     cat Jenkinsfile
+                    ls
                     ssh-keyscan -H github.com >> ~/.ssh/known_hosts
                     git pull
                     git push
