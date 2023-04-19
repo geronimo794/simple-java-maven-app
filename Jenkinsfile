@@ -15,7 +15,6 @@ node {
                 sh 'mvn test'
             }finally {
                 junit 'target/surefire-reports/*.xml'
-                input message: 'Lanjutkan ke tahap Deploy?' 
 
             }
         }
