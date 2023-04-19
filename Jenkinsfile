@@ -17,49 +17,27 @@ node {
                 junit 'target/surefire-reports/*.xml'
             }
         }
-        stage('Local Deploy') {
+        stage('Deploy') {
             sh './jenkins/scripts/deliver-local.sh'
-            // sh './jenkins/scripts/wait.sh'
+            sh './jenkins/scripts/wait.sh'
 
             input message: 'Lanjutkan ke tahap Deploy Github?' 
         }
     }
-        stage('Public Deploy') {
-                //             sshagent(['laptop-macbook']) 
-                // {
-                // }
-
-            // sh "sudo apt-get install ssh -y"
-            // // withCredentials([usernamePassword(credentialsId: 'ci-github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-            // //         sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/my-org/my-repo.git')
-            // //     }
-            sshagent(['laptop-macbook']) 
-            {
-                sh('''
-                    git config --local user.email "geronimo794@gmail.com"
-                    git config --local user.name "Ach Rozikin"
-                    git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
-                    git remote set-url origin git@github.com:geronimo794/simple-java-maven-app.git
-                    git push origin HEAD:master
-                ''')
-            } 
-
-            //     sh('git push') 
-                    //             git add .
-                    // git commit -m "Jenkins Build Success"
-                    // git checkout master
-                    // git pull
-
-            // withCredentials([usernamePassword(credentialsId: 'username-password-github', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]){
-            //     sh('''
-            //         git config --local user.email "geronimo794@gmail.com"
-            //         git config --local user.name "Ach Rozikin"
-            //         git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
-            //         git remote set-url origin https://github.com/geronimo794/simple-java-maven-app.git
-            //         git push origin HEAD:master
-            //     ''')
-            // }
-        }
-
-
+    stage('Public Deploy') {
+        // Using SSH Agent connection
+        sshagent(['laptop-macbook']) 
+        {
+            // Change local workspace jenkins
+            // And set from local SCM to origin github
+            // Push to origin github
+            sh('''
+                git config --local user.email "geronimo794@gmail.com"
+                git config --local user.name "Ach Rozikin"
+                git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
+                git remote set-url origin git@github.com:geronimo794/simple-java-maven-app.git
+                git push origin HEAD:master
+            ''')
+        } 
+    }
 }
