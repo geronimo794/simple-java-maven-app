@@ -1,8 +1,11 @@
 node {
+    // This is so important for scripted pipeline
+    // Because this will syncronize your code with you SCM
+    // If you ever wonder, why your source code not update
+    // Maybe because you are not include it on your scripted pipeline
     checkout scm
     docker.image('maven:3.9.0-eclipse-temurin-11').inside('-v /root/.m2:/root/.m2 -p 8080:8080') {
         stage('Build') {
-            sh 'ls'
             sh 'mvn -B -DskipTests clean package'
         }
 
