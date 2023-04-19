@@ -15,13 +15,13 @@ node {
                 sh 'mvn test'
             }finally {
                 junit 'target/surefire-reports/*.xml'
+                input message: 'Lanjutkan ke tahap Deploy?' 
+
             }
         }
         stage('Deploy') {
             sh './jenkins/scripts/deliver-local.sh'
             sh './jenkins/scripts/wait.sh'
-
-            input message: 'Lanjutkan ke tahap Deploy Github?' 
         }
     }
     stage('Public Deploy') {
