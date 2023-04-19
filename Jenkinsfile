@@ -4,6 +4,7 @@ node {
     // If you ever wonder, why your source code not update
     // Maybe because you are not include it on your scripted pipeline
     checkout scm
+    
     docker.image('maven:3.9.0-eclipse-temurin-11').inside('-v /root/.m2:/root/.m2 -p 8080:8080') {
         stage('Build') {
             sh 'mvn -B -DskipTests clean package'
@@ -38,7 +39,7 @@ node {
                     git config --local user.email "geronimo794@gmail.com"
                     git config --local user.name "Ach Rozikin"
                     git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
-                    git remote set-url origin https://github.com/geronimo794/simple-java-maven-app.git
+                    git remote set-url origin git@github.com:geronimo794/simple-java-maven-app.git
                     git push origin HEAD:master
                 ''')
             } 
