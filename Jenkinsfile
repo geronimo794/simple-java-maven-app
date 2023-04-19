@@ -21,14 +21,9 @@ node {
         }
     }
         stage('Public Deploy') {
-                            sshagent(['laptop-macbook']) 
-                {
-                    git config --local user.email "geronimo794@gmail.com"
-                    git config --local user.name "Ach Rozikin"
-                    git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
-                    git remote set-url origin https://github.com/geronimo794/simple-java-maven-app.git
-                    git push origin HEAD:master
-                }
+                //             sshagent(['laptop-macbook']) 
+                // {
+                // }
 
             // sh "sudo apt-get install ssh -y"
             // // withCredentials([usernamePassword(credentialsId: 'ci-github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
@@ -37,7 +32,11 @@ node {
             sshagent(['laptop-macbook']) 
             {
                 sh('''
-                    ls
+                    git config --local user.email "geronimo794@gmail.com"
+                    git config --local user.name "Ach Rozikin"
+                    git config --local credential.helper "!f() { echo username=\\$GIT_USERNAME; echo password=\\$GIT_PASSWORD; }; f"
+                    git remote set-url origin https://github.com/geronimo794/simple-java-maven-app.git
+                    git push origin HEAD:master
                 ''')
             } 
 
